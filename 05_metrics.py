@@ -1,7 +1,6 @@
 # %%
 import pandas as pd
 
-
 # %%
 df = pd.read_csv("data/dados_comunidade.csv")
 df.head()
@@ -22,6 +21,9 @@ dummy_vars = [
 ]
 
 df_analise = pd.get_dummies(df[dummy_vars]).astype(int)
+
+# %%
+df_analise.columns
 
 # %%
 num_vars = [
@@ -134,4 +136,6 @@ plt.legend([f"Árvore: {auc_arvore:.2f}", f"Naive Bayes: {auc_naive:.2f}", f"Reg
 
 plt.show()
 
+# %%
+pd.Series({"model": lin_reg, "features": features}).to_pickle("model_happy.pkl")
 # %%
